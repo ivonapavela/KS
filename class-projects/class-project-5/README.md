@@ -379,3 +379,5 @@ Ako idemo na `/blog` trebali bi vidjeti listu linkova na svaki pojedinačni post
 > ℹ️ Dobra točka za posljednji commit!  
 > `git add .`  
 > `git commit -m "Vjezba 3: Add pagination"`
+
+LINK ZA DEPLOYANU STRANICU https://hci-2023-24-project-aatc-andelas-projects.vercel.app/ !!!!
