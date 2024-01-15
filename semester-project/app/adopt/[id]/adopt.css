@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #663300; 
+    text-align: center;
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  img {
+    
+    width: 400x;
+    height: 250px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border-radius: 40px;
+    margin-right: 20px;
+  }
+  

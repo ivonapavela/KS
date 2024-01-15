@@ -1,0 +1,41 @@
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .login-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#fdd699;
+  }
+  
+  .login-container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  .login-heading {
+    font-size: 32px; 
+    margin-bottom: 20px; 
+    font-weight: bold;
+  }
+  
+  .input-container {
+    margin: 10px 0;
+  }
+  
+  .username-input,
+  .password-input {
+    width: 100%;
+    padding: 24px; 
+    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
