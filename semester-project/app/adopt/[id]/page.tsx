@@ -16,6 +16,7 @@ interface AnimalFields {
   image: any;
   species: string;
   description: string;
+  name: string;
 }
 
 interface Animal {
