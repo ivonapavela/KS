@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import * as contentful from 'contentful';
 import "./animal.css";
+
 
 export interface AnimalParams {
   params: Params;
@@ -13,10 +13,11 @@ interface Params {
 }
 
 interface AnimalFields {
-  name:string;
+ name:string;
   image:any;
   species: string;
-  description: string[];
+  description: string[]; 
+    
 }
 
 interface Animal {
@@ -25,6 +26,8 @@ interface Animal {
   };
   fields: AnimalFields;
 }
+
+const contentful = require('contentful');
 
 const client = contentful.createClient({
   space: 'b1y65b41b9h4',
@@ -37,9 +40,9 @@ export default function Adopt({ params }: AnimalParams) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = (await client.getEntries({
+         const response = (await client.getEntries({
           content_type: 'animal',
-        })) as { items: Animal[] };
+        })) as { items: Animal[] }; 
 
         setEntries(response.items);
       } catch (error) {
