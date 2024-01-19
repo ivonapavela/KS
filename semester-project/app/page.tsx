@@ -1,27 +1,32 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import * as contentful from 'contentful';
 import "./adopt/animal.css";
 
 interface AnimalFields {
-  name: string;
-  image: any;
-  species: string;
-  description: string[];
-}
+  name:string;
+   image:any;
+   species: string;
+   description: string[]; 
+     
+ }
+ 
+ interface Animal {
+   sys: {
+     id: string;
+   };
+   fields: AnimalFields;
+ }
 
-interface Animal {
-  sys: {
-    id: string;
-  };
-  fields: AnimalFields;
-}
+ 
 
-const client = contentful.createClient({
-  space: 'b1y65b41b9h4',
-  accessToken: 'l_NSgS6j86JPjxwHXR9TuwHGO74-5C_vN3hCtm63Mb8',
-});
+ const contentful = require('contentful');
+
+ const client = contentful.createClient({
+   space: 'b1y65b41b9h4',
+   accessToken: 'l_NSgS6j86JPjxwHXR9TuwHGO74-5C_vN3hCtm63Mb8',
+ });
+ 
 
 export default function Home() {
   const [entries, setEntries] = useState<Animal[]>([]);
