@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import "./recipes.css";
-import Image from "next/image";
 
 interface Params {
   category: string;
@@ -138,7 +137,7 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
             <div key={entry.sys.id} className="recipe-box">
               <Link href={`/recipes/${params.category}/${entry.sys.id}`}>
                 {entry.fields.postimage?.fields?.file?.url ? (
-                  <Image src={entry.fields.postimage.fields.file.url}
+                  <img src={entry.fields.postimage.fields.file.url}
                     alt={entry.fields.name} />
                 ) : (
                   <span>No Image</span>
