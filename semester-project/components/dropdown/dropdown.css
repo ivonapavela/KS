@@ -1,12 +1,12 @@
 @media (max-width: 680px) {
     .list {
-      flex-direction: row; /* Display buttons in a row */
-      flex-wrap: wrap; /* Allow wrapping to the next row */
-      justify-content: center; /* Center the buttons horizontally */
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
   
     .list li {
-      margin-right: 8px; /* Add some right margin between buttons */
+      width: 48%; /* Adjust the width as needed */
     }
   }
   
