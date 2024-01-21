@@ -56,7 +56,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar-container">
-      {isWiderThan500px || (<nav style={{ visibility: isNavBarVisible ? 'visible' : 'hidden' }}>
+      <nav style={{ visibility: isNavBarVisible ? 'visible' : 'hidden' }}>
         <div>
           <ul>
             {Object.entries(pages).map(([name, path]) => (
@@ -66,7 +66,7 @@ const NavBar = () => {
             ))}
           </ul>
         </div>
-      </nav>)}
+      </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
         <FontAwesomeIcon icon={isWiderThan500px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
       </button>
