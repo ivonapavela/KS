@@ -1,7 +1,7 @@
 import React from 'react';
 import './login.css';
 
-const LogIn: React.FC = () => {
+const LogInPage: React.FC = () => {
   return (
     <div className="login-page">
       <div className="login-container">
@@ -17,4 +17,4 @@ const LogIn: React.FC = () => {
   );
 };
 
-export default LogIn;
+export default LogInPage;
