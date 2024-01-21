@@ -7,9 +7,10 @@ nav {
   }
   
   .navbar-container {
-    position: center;
+    position: relative;
     display: flex;
     align-items: center;
+    margin: 0 auto;
   }
   
   .menu-button {
