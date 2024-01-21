@@ -6,7 +6,7 @@ import './navBar.css';
 
 const pages = {
   Home: "/",
-  Recipes: "/adopt",
+  Recipes: "/recipes",
   About: "/about",
   LogIn: "/LogIn",
 };
