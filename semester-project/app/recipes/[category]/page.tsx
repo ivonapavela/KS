@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import "./recipes.css";
+import Image from "next/image";
 
 interface Params {
   category: string;
@@ -137,7 +138,7 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
             <div key={entry.sys.id} className="recipe-box">
               <Link href={`/recipes/${params.category}/${entry.sys.id}`}>
                 {entry.fields.postimage?.fields?.file?.url ? (
-                  <img src={entry.fields.postimage.fields.file.url}
+                  <Image src={entry.fields.postimage.fields.file.url}
                     alt={entry.fields.name} />
                 ) : (
                   <span>No Image</span>
@@ -146,8 +147,7 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
                 <div className="cooking-time"> Cooking Time: {entry.fields.cookingTime} mins</div>
                 <div className="difficulty-level"> Difficulty: {entry.fields.difficulty}</div>
                 <div className="ingredient-count">Ingredients: {entry.fields.ingredients.length}</div>
-                <div className="comment-count">{entry.fields.comments ? entry.fields.comments.length : 0}
-</div>
+                <div className="comment-count">{entry.fields.comments ? entry.fields.comments.length : 0}</div>
               </Link>
             </div>
           ))}

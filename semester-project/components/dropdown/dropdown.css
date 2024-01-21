@@ -32,12 +32,13 @@
   
   @media (max-width: 680px) {
     .list {
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px; /* Adjust the gap as needed */
     }
   
     .list li {
-      width: 48%; /* Adjust the width as needed, leaving some space for margin or padding */
+      width: auto;
     }
   }
   
