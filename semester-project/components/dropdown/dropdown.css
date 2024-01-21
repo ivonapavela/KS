@@ -1,3 +1,21 @@
+/* dropdown.css */
+
+.list {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list li {
+    margin-bottom: 10px;
+  }
+
 @media (max-width: 680px) {
     .list {
       flex-direction: row;
