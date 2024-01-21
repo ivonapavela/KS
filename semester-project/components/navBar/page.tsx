@@ -18,29 +18,12 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(true);
-  const [isToggleButtonVisible, setIsToggleButtonVisible] = useState<boolean>(false);
   const pathname = usePathname();
 
+  // Set initial visibility based on provided pages
   useEffect(() => {
     setIsNavBarVisible(visiblePages.includes(pathname));
   }, [pathname]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsToggleButtonVisible(window.innerWidth < 768 && visiblePages.includes(pathname));
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Initial check
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [pathname]);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-100px' : '0');
-  }, [isNavBarVisible]);
 
   const handleToggleVisibility = () => {
     setIsNavBarVisible(!isNavBarVisible);
@@ -59,13 +42,10 @@ const NavBar = () => {
           </ul>
         </div>
       </nav>
-      {isToggleButtonVisible && (
-        <button onClick={handleToggleVisibility} className="menu-button">
-          Toggle NavBar
-        </button>
-      )}
+      <button onClick={handleToggleVisibility} className="menu-button">
+              Toggle NavBar
+      </button>
     </div>
   );
 };
-
 export default NavBar;

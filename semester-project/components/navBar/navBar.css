@@ -1,20 +1,18 @@
-/* navBar.css */
-
 .navbar-container {
-    /* Add your styles for the navbar container */
-  
-    /* Example styles */
-    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
   }
   
   nav {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    visibility: visible;
   }
   
   ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
@@ -25,29 +23,18 @@
   }
   
   .menu-button {
-    /* Add your styles for the toggle button */
-  
-    /* Example styles */
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
+    order: -1; /* Push the button to the right */
   }
   
-  /* Media query for small screens */
-  @media screen and (max-width: 600px) {
-    nav {
-      flex-direction: column; /* Display buttons in a column for small screens */
-      align-items: center; /* Center the buttons */
+  /* Media Query for smaller screens */
+  @media screen and (max-width: 768px) {
+    ul {
+      flex-direction: column; /* Display buttons in a column */
+      align-items: flex-end; /* Align items to the right */
     }
   
     li {
-      margin: 10px 0; /* Add some spacing between the buttons */
-    }
-  
-    .menu-button {
-      width: 100%; /* Make the toggle button full-width */
+      margin: 5px 0; /* Add some spacing between buttons */
     }
   }
   
