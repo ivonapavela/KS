@@ -17,7 +17,7 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
-  const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(typeof window !== 'undefined' && window.innerWidth >= 768);
+  const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(true);
   const pathname = usePathname();
 
   // Update visibility based on screen size
