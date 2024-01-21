@@ -13,7 +13,7 @@ nav {
   }
   
   .menu-button {
-    position: absolute;
+    position: relative;
     top: 30px; /* Adjust this value based on your preference for top position */
     right: 30px; /* Adjust this value based on your preference for right position */
     z-index: 1000;
