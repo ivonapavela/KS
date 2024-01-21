@@ -22,11 +22,6 @@
     margin: 0 10px;
   }
   
-  .menu-button {
-    order: -1; /* Push the button to the right */
-    align-self: flex-start; /* Align the button to the top */
-  }
-  
   /* Media Query for smaller screens */
   @media screen and (max-width: 768px) {
     ul {
