@@ -6,12 +6,12 @@ import './navBar.css';
 
 const pages = {
   Home: "/",
-  Recipes: "/recipes",
+  Recipes: "/recipes/all",
   About: "/about",
-  LogIn: "/LogIn",
+  MyProfile: "/myProfile",
 };
 
-const visiblePages = ["/", "/recipes/all", "/about", "/LogIn", "/recipes/breakfast", "/recipes/lunch",
+const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/breakfast", "/recipes/lunch",
   "/recipes/dinner", "/recipes/dessert", "/recipes/snack", "/recipes"
 ];
 
@@ -48,6 +48,7 @@ const NavBar = () => {
         </div>
       </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
+              Toggle NavBar
       </button>
     </div>
   );
