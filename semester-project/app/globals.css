@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -18,19 +18,6 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #ffd699;
+  background-color: rgb(var(--background-start-rgb));
 }
 
-.title {
-  text-align: left;
-  font-size: 42px;
-  letter-spacing: 0.5em;
-}
-
-.title span {
-  color: #663300; 
-}
-
-.title {
-  color: #e8964d ; 
-}
