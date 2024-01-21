@@ -19,6 +19,5 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-start-rgb));
-  margin-top: var(--page-margin);
 }
 
