@@ -99,60 +99,60 @@ export default function RecipsDetails({ params }: RecipesCategoriesParams) {
     );
   }
 
-
-
   return (
-    <main className = "main-container"><div className="main-information">
-      <div className="pageimage">
-        {entry.fields.postimage?.fields?.file?.url ? (
-          <Image src={entry.fields.postimage.fields.file.url} alt={entry.fields.name} />
-        ) : (
-          <span>No Image</span>
-        )}
+    <main className = "main-container">
+      <div className="main-information">
+              <div className="pageimage">
+                {entry.fields.postimage?.fields?.file?.url ? (
+                  <Image src={entry.fields.postimage.fields.file.url} alt={entry.fields.name} />
+                ) : (
+                  <span>No Image</span>
+                )}
+              </div>
+        <div className="recipe-details" key={entry?.sys.id}>
+                <h1 className="title">{entry?.fields.name}</h1>
+                <div className="star-rating">{renderStars(entry.fields.rating)}</div>
+                <h3>{entry?.fields.description}</h3>
+                <div className="display">
+                  <div className="display-line">
+                    <p className="first-line">{entry?.fields.cookingTime}</p>
+                    <p className="second-line">mins</p>
+                  </div>
+                  <div className="display-line">
+                    <p className="first-line">{entry?.fields.nutritions}</p>
+                    <p className="second-line">nutritions</p>
+                  </div>
+                  <div className="display-line">
+                    <p className="first-line">{entry?.fields.ingredients.length}</p>
+                    <p className="second-line">ingredients</p>
+                  </div>
+                </div>
+                <div className="diet">
+                  <p className="diet-title">Dietary preferences</p>
+                  {entry?.fields.diet.map((preference, index) => (
+                    <p className="preference" key={index}>{preference}</p>
+                  ))}
+                </div>
+        </div>
       </div>
-      <div className="recipe-details" key={entry?.sys.id}>
-        <h1 className="title">{entry?.fields.name}</h1>
-        <div className="star-rating">{renderStars(entry.fields.rating)}</div>
-        <h3>{entry?.fields.description}</h3>
-        <div className="display">
-          <div className="display-line">
-            <p className="first-line">{entry?.fields.cookingTime}</p>
-            <p className="second-line">mins</p>
-          </div>
-          <div className="display-line">
-            <p className="first-line">{entry?.fields.nutritions}</p>
-            <p className="second-line">nutritions</p>
-          </div>
-          <div className="display-line">
-            <p className="first-line">{entry?.fields.ingredients.length}</p>
-            <p className="second-line">ingredients</p>
-          </div>
-        </div>
-        <div className="diet">
-          <p className="diet-title">Dietary preferences</p>
-          {entry?.fields.diet.map((preference, index) => (
-            <p className="preference" key={index}>{preference}</p>
-          ))}
-        </div>
+      <div className="secondary-information">
+              <div className="ingredients">
+                <p className="section-title">Ingredients:</p>
+                {entry?.fields.ingredients.map((ingredient, index) => (
+                  <p className="ingredient" key={index}>
+                    {ingredient}
+                    {index !== entry.fields.ingredients.length - 1 && <br />}
+                  </p>
+                ))}
+              </div>
+              <div className="instructions">
+                <p className="section-title">Instructions:</p>
+                <p>{entry?.fields.instructions}</p>
+              </div>
+              <div className="recent-added-recipes"><RecentRecipes /></div>
       </div>
-    </div><div className="flex w-full mt-20">
-        <div className="ingredients">
-          <p className="section-title">Ingredients:</p>
-          {entry?.fields.ingredients.map((ingredient, index) => (
-            <p className="ingredient" key={index}>
-              {ingredient}
-              {index !== entry.fields.ingredients.length - 1 && <br />}
-            </p>
-          ))}
-        </div>
-
-        <div className="instructions">
-          <p className="section-title">Instructions:</p>
-          <p>{entry?.fields.instructions}</p>
-        </div>
-
-        <div className="recent-added-recipes"><RecentRecipes /></div>
-      </div><CommentForm recipeId={entry?.sys.id} /><div className="comment-section">
+      <div className="comment-section">
+      <CommentForm recipeId={entry?.sys.id} />
         <p className="section-title">Comments:</p>
         <ul className="comments-list">
           {entry?.fields.comments ? (
@@ -165,6 +165,7 @@ export default function RecipsDetails({ params }: RecipesCategoriesParams) {
             <p>No comments available.</p>
           )}
         </ul>
-      </div></main>
+      </div>
+  </main>
   );
 }
