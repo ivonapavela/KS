@@ -20,12 +20,12 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(true);
-  const [isWiderThan650px, setIsWiderThan650px] = useState<boolean>(true);
+  const [isWiderThan550px, setIsWiderThan550px] = useState<boolean>(true);
   const pathname = usePathname();
 
   // Update visibility and icon based on screen size
   const handleResize = () => {
-    setIsWiderThan650px(typeof window !== 'undefined' && window.innerWidth >= 650);
+    setIsWiderThan550px(typeof window !== 'undefined' && window.innerWidth >= 550);
     setIsNavBarVisible(visiblePages.includes(pathname));
   };
 
@@ -68,7 +68,7 @@ const NavBar = () => {
         </div>
       </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
-        <FontAwesomeIcon icon={isWiderThan650px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
+        <FontAwesomeIcon icon={isWiderThan550px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
       </button>
     </div>
   );

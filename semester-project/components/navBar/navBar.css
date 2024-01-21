@@ -29,7 +29,7 @@ nav {
   }
   
   li {
-    margin: 10px 25px;
+    margin: 20px;
   }
   
   .icon {
@@ -37,14 +37,14 @@ nav {
     color: green;
   }
   
-  @media only screen and (max-width:650px) {
+  @media only screen and (max-width:550px) {
     .navbar-container {
       flex-direction: column;
       height: auto;
     }
 
     nav {
-        width:70%;
+        width:50%;
     }
   
     ul {
