@@ -15,7 +15,7 @@ nav {
   .menu-button {
     position: absolute;
     top: 20px; /* Adjust this value based on your preference for top position */
-    right: 10px; /* Adjust this value based on your preference for right position */
+    right: 20px; /* Adjust this value based on your preference for right position */
     z-index: 1000;
   }
   
@@ -33,7 +33,7 @@ nav {
   }
   
   .icon {
-    font-size: 20px;
+    font-size: 40px;
     color: green;
   }
   
