@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Button from "@/components/button/page";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'; // Import arrow icons
 import './navBar.css';
 
 const pages = {
@@ -18,11 +20,13 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(true);
+  const [isWiderThan650px, setIsWiderThan650px] = useState<boolean>(true);
   const pathname = usePathname();
 
-  // Update visibility based on screen size
+  // Update visibility and icon based on screen size
   const handleResize = () => {
-    setIsNavBarVisible(typeof window !== 'undefined' && window.innerWidth >= 650);
+    setIsWiderThan650px(typeof window !== 'undefined' && window.innerWidth >= 650);
+    setIsNavBarVisible(visiblePages.includes(pathname));
   };
 
   useEffect(() => {
@@ -64,7 +68,7 @@ const NavBar = () => {
         </div>
       </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
-        Toggle NavBar
+        <FontAwesomeIcon icon={isWiderThan650px ? faBars : isNavBarVisible ? faArrowUp : faArrowDown} className="icon" />
       </button>
     </div>
   );
