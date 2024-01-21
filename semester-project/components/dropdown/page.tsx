@@ -35,7 +35,7 @@ const Dropdown: React.FC<DropdownProps> = ({ showDropdown, onMouseOver, onMouseO
 
   return (
     <div style={dropdownStyle} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
-      <ul style={listStyle}>
+      <ul className="list" style={listStyle}>
         {categories.map((name) => (
           <li key={name}>
             {name === "all" ? (
