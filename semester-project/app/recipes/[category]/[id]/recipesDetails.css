@@ -9,6 +9,7 @@
   .secondary-information,
   .comment-section {
     width: 100%;
+    display: flex;
   }
   
   .pageimage {
