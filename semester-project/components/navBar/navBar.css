@@ -7,13 +7,15 @@ nav {
   }
   
   .navbar-container {
+    position: relative; /* Add this line to make the .menu-button position relative to the .navbar-container */
     display: flex;
     align-items: center;
   }
   
   .menu-button {
-    margin-right: 10px;
-    margin-top: 20px;
+    position: absolute;
+    top: 20px; /* Adjust this value based on your preference for top position */
+    right: 10px; /* Adjust this value based on your preference for right position */
     z-index: 1000;
   }
   
