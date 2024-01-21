@@ -17,19 +17,21 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
-  const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(window.innerWidth >= 768); // Initial visibility based on screen width
+  const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(typeof window !== 'undefined' && window.innerWidth >= 768);
   const pathname = usePathname();
 
   // Update visibility based on screen size
   const handleResize = () => {
-    setIsNavBarVisible(window.innerWidth >= 768);
+    setIsNavBarVisible(typeof window !== 'undefined' && window.innerWidth >= 768);
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   // Set initial visibility based on provided pages
@@ -39,7 +41,9 @@ const NavBar = () => {
 
   // Set CSS variable based on visibility state
   useEffect(() => {
-    document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-100px' : '0');
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-100px' : '0');
+    }
   }, [isNavBarVisible]);
 
   const handleToggleVisibility = () => {
