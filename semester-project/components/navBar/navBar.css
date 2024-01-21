@@ -1,36 +1,62 @@
 .navbar-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 50px; /* You can adjust the height as needed */
+    background-color: #ffffff; /* Background color of the navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  
+    /* Optional: Add padding to the navbar */
+    padding: 0 20px;
+  
+    /* Optional: Make the navbar stick to the top of the screen */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
   }
   
   nav {
     display: flex;
-    justify-content: flex-end;
-    visibility: visible;
+    align-items: center;
   }
   
   ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
     padding: 0;
-    margin: 10px 0; /* Add margin to create space between the navbar and the buttons */
     display: flex;
   }
   
   li {
-    margin: 0 10px;
+    margin-right: 15px;
   }
   
-  /* Media Query for smaller screens */
-  @media screen and (max-width: 768px) {
+  .menu-button {
+    display: none; /* Hide the toggle button by default */
+  
+    /* Optional: Adjust the styles of the toggle button */
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Media query to show the toggle button when the screen width is smaller */
+  @media only screen and (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column; /* Stack items vertically */
+      height: auto; /* Allow the height to adjust based on content */
+    }
+  
     ul {
-      flex-direction: column;
-      align-items: center;
-      margin: 5px 0; /* Add some spacing between buttons */
+      flex-direction: column; /* Stack list items vertically */
+      align-items: center; /* Center items horizontally */
     }
   
     li {
-      margin: 5px 0; /* Add some spacing between buttons */
+      margin: 10px 0; /* Add spacing between list items */
     }
   }
   
