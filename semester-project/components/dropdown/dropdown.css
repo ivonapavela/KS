@@ -1,4 +1,4 @@
-#dropdown-container {
+.dropdown {
     position: absolute;
     top: 100%;
     left: 0;
@@ -9,8 +9,8 @@
     display: none;
     z-index: 1000;
   }
-
-  #dropdown-list {
+  
+  .list {
     list-style-type: none;
     padding: 0;
     margin: 0;
