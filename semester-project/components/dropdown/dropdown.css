@@ -1,10 +1,10 @@
 .dropdown-container {
     position: absolute;
-    top: 100%; /* Increased margin-top */
+    top: 100%;
     left: 0;
-    width: 150px;
+    width: auto; /* Change to auto to make it hug the content */
     background-color: #FFFFFF;
-    border-radius: 20px; /* Increased border-radius for a rounder appearance */
+    border-radius: 20px;
     padding: 8px;
     display: none;
     z-index: 1000;
@@ -14,7 +14,7 @@
     display: block;
   }
   
-.list {
+  .list {
     background-color: #FFFFFF;
     border-radius: 20px;
     padding: 8px;
@@ -29,8 +29,8 @@
   .list li {
     margin-bottom: 10px;
   }
-
-@media (max-width: 680px) {
+  
+  @media (max-width: 680px) {
     .list {
       flex-direction: row;
       flex-wrap: wrap;
@@ -38,7 +38,7 @@
     }
   
     .list li {
-      width: 48%; /* Adjust the width as needed */
+      width: 48%;
     }
   }
   
