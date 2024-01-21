@@ -1,46 +1,53 @@
-/* navbar.css */
+/* navBar.css */
 
-body {
-    position: relative;
+.navbar-container {
+    /* Add your styles for the navbar container */
+  
+    /* Example styles */
+    background-color: #333;
+    padding: 10px;
   }
   
   nav {
-    width: 40%;
-    margin: 0 auto; /* Center the navbar */
-    margin-top: 20px;
-    border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index:1000;
-    margin-left:30%;
-  }
-  
-  .navbar-container {
     display: flex;
-    align-items: center;
-  }
-  
-  .menu-button {
-    margin-right: 10px; /* Adjust margin as needed */
-    margin-top:20px;/* Add margin to position the button on the far left */
-    z-index:1000;
+    justify-content: center;
   }
   
   ul {
     list-style-type: none;
-    display: flex;
-    justify-content: space-around;
     padding: 0;
-    background-color: white; /* Set your desired background color */
-    border-radius: 40px; /* Add some border-radius for a rounded look */
+    margin: 0;
+    display: flex;
   }
   
   li {
-    margin: 10px;
+    margin: 0 10px;
   }
   
-  .icon {
-    font-size: 40px;
-    margin: 30px;
-    color: green;
+  .menu-button {
+    /* Add your styles for the toggle button */
+  
+    /* Example styles */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Media query for small screens */
+  @media screen and (max-width: 600px) {
+    nav {
+      flex-direction: column; /* Display buttons in a column for small screens */
+      align-items: center; /* Center the buttons */
+    }
+  
+    li {
+      margin: 10px 0; /* Add some spacing between the buttons */
+    }
+  
+    .menu-button {
+      width: 100%; /* Make the toggle button full-width */
+    }
   }
   
