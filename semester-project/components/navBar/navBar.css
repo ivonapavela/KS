@@ -14,10 +14,10 @@ nav {
   
   .menu-button {
     position: relative;
+    margin-left: auto;
     margin-top:20px;
     margin-right:20px;
     z-index: 1000;
-    margin-left:90%;
   }
   
   ul {
