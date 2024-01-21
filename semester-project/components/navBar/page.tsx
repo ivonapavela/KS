@@ -56,7 +56,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar-container">
-      {isWiderThan500px && (<nav style={{ visibility: isNavBarVisible ? 'visible' : 'hidden' }}>
+      {isWiderThan500px || (<nav style={{ visibility: isNavBarVisible ? 'visible' : 'hidden' }}>
         <div>
           <ul>
             {Object.entries(pages).map(([name, path]) => (
