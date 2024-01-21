@@ -4,6 +4,7 @@ nav {
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    margin-right:50px;
   }
   
   .navbar-container {
@@ -37,14 +38,14 @@ nav {
     color: green;
   }
   
-  @media only screen and (max-width:750px) {
+  @media only screen and (max-width:500px) {
     .navbar-container {
       flex-direction: column;
       height: auto;
     }
 
     nav {
-        width:90%;
+        width:50%;
     }
   
     ul {
