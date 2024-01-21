@@ -52,7 +52,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar-container">
-      <nav style={{ visibility: isNavBarVisible ? 'visible' : 'hidden' }}>
+      <nav style={{ display: isNavBarVisible ? 'block' : 'none' }}>
         <div>
           <ul>
             {Object.entries(pages).map(([name, path]) => (
