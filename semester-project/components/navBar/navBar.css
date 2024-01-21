@@ -37,14 +37,14 @@ nav {
     color: green;
   }
   
-  @media only screen and (max-width:700px) {
+  @media only screen and (max-width:750px) {
     .navbar-container {
       flex-direction: column;
       height: auto;
     }
 
     nav {
-        width:40%;
+        width:90%;
     }
   
     ul {
@@ -58,7 +58,7 @@ nav {
     }
   
     li {
-      margin: 30px; 
+      margin: 10px; 
     }
   }
   

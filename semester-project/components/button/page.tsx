@@ -58,7 +58,7 @@ const Button: React.FC<ButtonProps> = ({ path, name, onClick, disabled, isActive
       cursor: 'pointer',
       transition: 'background-color 0.3s ease, color 0.3s ease, border 0.3s ease',
     };
-  
+
     return (
       <div>
         <div style={{ position: 'relative' }}>
