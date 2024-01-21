@@ -17,28 +17,30 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
-  const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(true);
-  const [isToggleButtonVisible, setIsToggleButtonVisible] = useState<boolean>(true);
+  const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(window.innerWidth >= 768); // Initial visibility based on screen width
   const pathname = usePathname();
+
+  // Update visibility based on screen size
+  const handleResize = () => {
+    setIsNavBarVisible(window.innerWidth >= 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // Set initial visibility based on provided pages
   useEffect(() => {
     setIsNavBarVisible(visiblePages.includes(pathname));
   }, [pathname]);
 
-  // Set visibility of toggle button based on screen width
+  // Set CSS variable based on visibility state
   useEffect(() => {
-    const handleResize = () => {
-      setIsToggleButtonVisible(window.innerWidth < 768); // Adjust the width threshold as needed
-    };
-
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-100px' : '0');
+  }, [isNavBarVisible]);
 
   const handleToggleVisibility = () => {
     setIsNavBarVisible(!isNavBarVisible);
@@ -57,11 +59,9 @@ const NavBar = () => {
           </ul>
         </div>
       </nav>
-      {isToggleButtonVisible && (
-        <button onClick={handleToggleVisibility} className="menu-button">
-          Toggle NavBar
-        </button>
-      )}
+      <button onClick={handleToggleVisibility} className="menu-button">
+        Toggle NavBar
+      </button>
     </div>
   );
 };
