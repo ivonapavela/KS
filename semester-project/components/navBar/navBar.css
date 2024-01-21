@@ -7,15 +7,15 @@ nav {
   }
   
   .navbar-container {
-    position: relative; /* Add this line to make the .menu-button position relative to the .navbar-container */
+    position: relative;
     display: flex;
     align-items: center;
   }
   
   .menu-button {
     position: relative;
-    margin-top:10px;
-    margin-right:10px;
+    margin-top:20px;
+    margin-right:20px;
     z-index: 1000;
   }
   
@@ -37,7 +37,7 @@ nav {
     color: green;
   }
   
-  @media only screen and (max-width:500px) {
+  @media only screen and (max-width:600px) {
     .navbar-container {
       flex-direction: column;
       height: auto;
@@ -54,7 +54,7 @@ nav {
   
     .menu-button {
       order: -1; 
-      margin-bottom: 10px; 
+      margin-bottom: -250px;
     }
   
     li {

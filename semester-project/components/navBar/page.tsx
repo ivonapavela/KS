@@ -20,12 +20,12 @@ const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/bre
 const NavBar = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(true);
-  const [isWiderThan650px, setIsWiderThan650px] = useState<boolean>(true);
+  const [isWiderThan600px, setIsWiderThan600px] = useState<boolean>(true);
   const pathname = usePathname();
 
   // Update visibility and icon based on screen size
   const handleResize = () => {
-    setIsWiderThan650px(typeof window !== 'undefined' && window.innerWidth >= 500);
+    setIsWiderThan600px(typeof window !== 'undefined' && window.innerWidth >= 600);
     setIsNavBarVisible(visiblePages.includes(pathname));
   };
 
@@ -46,7 +46,7 @@ const NavBar = () => {
   // Set CSS variable based on visibility state
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-200px' : '0');
+      document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-250px' : '0');
     }
   }, [isNavBarVisible]);
 
@@ -68,7 +68,7 @@ const NavBar = () => {
         </div>
       </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
-        <FontAwesomeIcon icon={isWiderThan650px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
+        <FontAwesomeIcon icon={isWiderThan600px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
       </button>
     </div>
   );
