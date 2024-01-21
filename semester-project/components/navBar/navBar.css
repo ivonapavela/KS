@@ -24,6 +24,7 @@
   
   .menu-button {
     order: -1; /* Push the button to the right */
+    align-self: flex-start; /* Align the button to the top */
   }
   
   /* Media Query for smaller screens */
