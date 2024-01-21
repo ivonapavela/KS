@@ -22,7 +22,7 @@ const NavBar = () => {
 
   // Update visibility based on screen size
   const handleResize = () => {
-    setIsNavBarVisible(typeof window !== 'undefined' && window.innerWidth >= 550);
+    setIsNavBarVisible(typeof window !== 'undefined' && window.innerWidth >= 650);
   };
 
   useEffect(() => {
