@@ -43,6 +43,10 @@ nav {
       flex-direction: column;
       height: auto;
     }
+
+    nav {
+        width:70%;
+    }
   
     ul {
       flex-direction: column;
