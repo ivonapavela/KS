@@ -1,34 +1,12 @@
-.dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 150px;
-    background-color: #FFFFFF;
-    border-radius: 20px;
-    padding: 8px;
-    display: none;
-    z-index: 1000;
-  }
-  
-  .list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  @media screen and (max-width: 680px) {
-
-    #dropdown-list {
-      flex-direction: row; 
-      flex-wrap: wrap; 
-      justify-content: center; 
+@media (max-width: 680px) {
+    .list {
+      flex-direction: row; /* Display buttons in a row */
+      flex-wrap: wrap; /* Allow wrapping to the next row */
+      justify-content: center; /* Center the buttons horizontally */
     }
   
-    #dropdown-list li {
-      width: 50%; 
+    .list li {
+      margin-right: 8px; /* Add some right margin between buttons */
     }
   }
   
