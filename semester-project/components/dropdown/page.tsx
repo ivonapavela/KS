@@ -13,11 +13,8 @@ const categories = ["breakfast", "lunch", "dinner", "dessert", "snack", "all"];
 const Dropdown: React.FC<DropdownProps> = ({ showDropdown, onMouseOver, onMouseOut }) => {
   const [clickedButton, setClickedButton] = useState<string>('');
 
-
   return (
-    <div>
-        <br></br>
-        {showDropdown && (<div onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <div className={`dropdown-container ${showDropdown ? 'active' : ''}`} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       <ul className="list">
         {categories.map((name) => (
           <li key={name}>
@@ -29,7 +26,6 @@ const Dropdown: React.FC<DropdownProps> = ({ showDropdown, onMouseOver, onMouseO
           </li>
         ))}
       </ul>
-    </div>)}
     </div>
   );
 };

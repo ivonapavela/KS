@@ -1,5 +1,19 @@
-/* dropdown.css */
-
+.dropdown-container {
+    position: absolute;
+    top: 100%; /* Increased margin-top */
+    left: 0;
+    width: 150px;
+    background-color: #FFFFFF;
+    border-radius: 20px; /* Increased border-radius for a rounder appearance */
+    padding: 8px;
+    display: none;
+    z-index: 1000;
+  }
+  
+  .dropdown-container.active {
+    display: block;
+  }
+  
 .list {
     background-color: #FFFFFF;
     border-radius: 20px;
