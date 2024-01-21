@@ -1,7 +1,6 @@
 nav {
     margin: 0 auto;
     margin-top: 20px;
-    margin-right: 70px; /* Adjust this value based on your preference for right margin */
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -38,15 +37,14 @@ nav {
     color: green;
   }
   
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width:500px) {
     .navbar-container {
       flex-direction: column;
       height: auto;
     }
-  
+
     nav {
-      width: 50%;
-      margin-right: 0; /* Adjust this value to remove the right margin on smaller screens */
+        width:50%;
     }
   
     ul {
@@ -55,12 +53,12 @@ nav {
     }
   
     .menu-button {
-      order: -1;
-      margin-bottom: 10px;
+      order: -1; 
+      margin-bottom: 10px; 
     }
   
     li {
-      margin: 10px;
+      margin: 10px; 
     }
   }
   
