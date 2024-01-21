@@ -31,13 +31,12 @@
   }
   @media (max-width: 680px) {
     .list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Display items in two columns */
-      gap: 10px; /* Add some gap between items */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
   
     .list li {
-      width: auto; /* Adjust the width as needed */
+      width: 48%; /* Adjust the width as needed, leaving some space for margin or padding */
     }
   }
-  
