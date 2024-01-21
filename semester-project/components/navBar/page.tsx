@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Button from "@/components/button/page";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'; // Import arrow icons
+import { faBars, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'; // Import arrow icons
 import './navBar.css';
 
 const pages = {
@@ -68,7 +68,7 @@ const NavBar = () => {
         </div>
       </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
-        <FontAwesomeIcon icon={isWiderThan650px ? faBars : isNavBarVisible ? faArrowUp : faArrowDown} className="icon" />
+        <FontAwesomeIcon icon={isWiderThan650px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
       </button>
     </div>
   );
