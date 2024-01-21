@@ -33,15 +33,11 @@ const Dropdown: React.FC<DropdownProps> = ({ showDropdown, onMouseOver, onMouseO
     alignItems: 'center',
   };
 
-  const listItemStyle: React.CSSProperties = {
-    marginBottom: '8px', // Add some bottom margin between buttons
-  };
-
   return (
-    <div className="dropdown" onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
-      <ul className="list" style={listStyle}>
+    <div style={dropdownStyle} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+      <ul style={listStyle}>
         {categories.map((name) => (
-          <li key={name} style={listItemStyle}>
+          <li key={name}>
             {name === "all" ? (
               <Button path={`/recipes`} name={name} setClickedButton={setClickedButton}/>
             ) : (
