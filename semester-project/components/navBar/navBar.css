@@ -1,10 +1,9 @@
-
-  nav {
-    margin: 0 auto; /* Center the navbar */
+nav {
+    margin: 0 auto;
     margin-top: 20px;
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index:1000;
+    z-index: 1000;
   }
   
   .navbar-container {
@@ -13,9 +12,9 @@
   }
   
   .menu-button {
-    margin-right: 10px; /* Adjust margin as needed */
-    margin-top:20px;/* Add margin to position the button on the far left */
-    z-index:1000;
+    margin-right: 10px;
+    margin-top: 20px;
+    z-index: 1000;
   }
   
   ul {
@@ -23,8 +22,8 @@
     display: flex;
     justify-content: space-around;
     padding: 0;
-    background-color: white; /* Set your desired background color */
-    border-radius: 40px; /* Add some border-radius for a rounded look */
+    background-color: white;
+    border-radius: 40px;
   }
   
   li {
@@ -37,19 +36,24 @@
     color: green;
   }
   
-
   @media only screen and (max-width: 768px) {
     .navbar-container {
-      flex-direction: column; /* Stack items vertically */
-      height: auto; /* Allow the height to adjust based on content */
+      flex-direction: column;
+      height: auto;
     }
   
     ul {
-      flex-direction: column; /* Stack list items vertically */
-      align-items: center; /* Center items horizontally */
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .menu-button {
+      order: -1; 
+      margin-bottom: 10px; 
     }
   
     li {
-      margin: 10px 25px; /* Add spacing between list items */
+      margin: 10px 0; 
     }
   }
+  
