@@ -29,9 +29,9 @@
   .list li {
     margin-bottom: 10px;
   }
+  
   @media (max-width: 680px) {
     .list {
-      display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
     }
@@ -40,3 +40,4 @@
       width: 48%; /* Adjust the width as needed, leaving some space for margin or padding */
     }
   }
+  
