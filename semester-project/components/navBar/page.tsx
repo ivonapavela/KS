@@ -8,10 +8,10 @@ const pages = {
   Home: "/",
   Recipes: "/recipes/all",
   About: "/about",
-  MyProfile: "/myprofile",
+  MyProfile: "/myProfile",
 };
 
-const visiblePages = ["/", "/recipes/all", "/about", "/myprofile", "/recipes/breakfast", "/recipes/lunch",
+const visiblePages = ["/", "/recipes/all", "/about", "/myProfile", "/recipes/breakfast", "/recipes/lunch",
   "/recipes/dinner", "/recipes/dessert", "/recipes/snack", "/recipes"
 ];
 
