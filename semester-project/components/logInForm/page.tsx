@@ -1,6 +1,7 @@
 'use client'
 import { useAuth } from "@/app/AuthContext";
 import { useEffect, useState } from "react";
+import "./logInPage.css";
 
 interface UserFields {
   userName: string;
