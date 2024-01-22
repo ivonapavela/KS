@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import LogInForm from '@/components/logInForm/page';
 import SignUpForm from '@/components/signUpForm/page';
-import AuthToggle from '../AuthToggle'; // Import the AuthToggle component
 import { useAuth } from '@/app/AuthContext';
 import DisplaySavedRecipes from '../displaySavedRecipes/page';
 

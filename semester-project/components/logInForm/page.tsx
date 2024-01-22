@@ -103,16 +103,8 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
 
 
   return (
-    <main className="main">
-      <div className="login-page">
-        <div className="image">
-          {image.length > 0 && image[0].fields.image?.fields?.file?.url ? (
-            <img src={image[0].fields.image.fields.file.url} alt={image[0].sys.id} />
-          ) : (
-            <span>No Image</span>
-          )}
-        </div>
-        <div className="login-container">
+    <main className="main" style={{ backgroundImage: `url(${image.length > 0 && image[0].fields.image?.fields?.file?.url})` }}>
+         <div className="login-container">
             <h1 className="login-heading">Log In</h1>
             <div className="input-container">
             <div className="icon-container">
@@ -144,7 +136,6 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
             <div className="submit-button"><Button setClickedButton={handleSubmit} name={"Log In"} path={""}></Button></div>
             <button onClick={toggleSignUp}>Don&apos;t have an account? Sign up here!</button>
           </div>
-        </div>
     </main>
   );
 };
