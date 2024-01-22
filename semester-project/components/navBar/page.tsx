@@ -71,7 +71,7 @@ const NavBar = () => {
       <FontAwesomeIcon
           icon={isWiderThan680px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown}
           className="icon"
-          style={{ color: pathname === '/' ? 'white' : 'green' }}
+          style={{ color: (pathname === '/' && isWiderThan680px) ? 'white' : 'green' }}
         />
       </button>
     </div>
