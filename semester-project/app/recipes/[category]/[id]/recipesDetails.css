@@ -148,11 +148,13 @@ h3 {
 
 .ingredient {
     border-radius: 10px;
-    margin:10px;
+    margin:20px;
     padding: 5px 10px;
     box-sizing: border-box;
     font-size:20px;
-    color: rgb(var(--main-color-rgb));
+    background-color: rgb(var(--main-color-rgb));
+    color:white;
+    border-radius: 20px;
 }
   
 .instructions {

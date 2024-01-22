@@ -90,7 +90,7 @@ export default function DisplaySavedRecipes() {
       {user &&
   user.fields.savedRecipes.map((recipe, index) => (
             <div key={index} className="recipe-box">
-              <Link href={`/recipes/${recipe.fields.category}/${recipe.fields.name}`}>
+              <Link href={`/recipes/${recipe.fields.category}/${recipe.sys.id}`}>
                 {recipe.fields.postimage?.fields?.file?.url ? (
                   <img src={recipe.fields.postimage.fields.file.url} alt={recipe.fields.name} />
                 ) : (
