@@ -7,6 +7,7 @@ import "./recipes.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
+import SearchBox from '@/components/searchBox/page';
 
 
 interface Params {
@@ -128,7 +129,7 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
     )}
       <h1 className="text-3xl font-bold p-10" style={{ textTransform: 'capitalize' }}>{params.category} Recipes</h1>
       <div className="flex justify-between w-full">
-
+  <SearchBox onSearch={handleSearch} />
   <div className="recipe-count ml-auto">
           You have <span style={{ fontWeight: 'bold' }}>
             {filteredEntries
