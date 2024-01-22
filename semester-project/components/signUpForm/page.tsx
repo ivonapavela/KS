@@ -1,6 +1,10 @@
 'use client'
 import { createClient, Entry } from 'contentful-management';
 import { useState } from 'react';
+import "../logInForm/logInPage.css";
+import Button from '../button/page';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface UserFields {
   userName: string;
@@ -41,7 +45,7 @@ const addUser = async (newEntryData: UserFields) => {
     }
   };
 
-  interface SignUpFormProps {
+interface SignUpFormProps {
     toggleSignUp: () => void;
   }
   
@@ -50,36 +54,57 @@ const addUser = async (newEntryData: UserFields) => {
     const [password, setPassword] = useState<string>('');
     const [uniqueUserNameError, setUniqueUserNameError] = useState(false);
     const [passwordError, setPasswordError] = useState<string>('');
+    const [showErrorMessages, setShowErrorMessages] = useState(true);
   
     const isPasswordValid = password.length < 6;
   
+    const handleCloseErrorMessages = () => {
+      setShowErrorMessages(false);
+    };
+  
     const handleSubmit = async () => {
       try {
-        setUniqueUserNameError(false); // Clear unique username error
-        setPasswordError(''); // Clear password too short error
+        setUniqueUserNameError(false);
+        setPasswordError('');
   
         if (isPasswordValid) {
-          setPasswordError('Password is too short. Please use at least six characters.'); // Display message that password is too short
+          setPasswordError('Password is too short. Please use at least six characters.');
+          setShowErrorMessages(true); // Show error messages again on new submission attempt
           return;
         }
   
         await addUser({ userName, password });
         setUserName('');
         setPassword('');
+        setShowErrorMessages(true); // Reset the error messages visibility on successful submission
       } catch (error) {
         console.error('Error submitting comment:', error);
         setUniqueUserNameError(true);
+        setShowErrorMessages(true); // Reset the error messages visibility on submission error
       }
     };
   
     return (
       <main>
-        {uniqueUserNameError && <div className="error message">The userName is already taken. Try another one.</div>}
-        {passwordError && <div className="error message">{passwordError}</div>}
         <div className="login-page">
           <div className="login-container">
+            {showErrorMessages && uniqueUserNameError && (
+              <div className="error message">
+                The Username is already taken. Try another one.
+                <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={handleCloseErrorMessages} />
+              </div>
+            )}
+            {showErrorMessages && passwordError && (
+              <div className="error message">
+                {passwordError}
+                <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={handleCloseErrorMessages} />
+              </div>
+            )}
             <h1 className="login-heading">Sign Up</h1>
             <div className="input-container">
+            <div className="icon-container">
+              <FontAwesomeIcon icon={faUser} />
+            </div>
               <input
                 type="text"
                 placeholder="Username"
@@ -98,12 +123,13 @@ const addUser = async (newEntryData: UserFields) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <div className="icon-container">
+              <FontAwesomeIcon icon={faLock} />
+            </div>
             </div>
   
-            <button type="button" onClick={handleSubmit}>
-              Sign Up
-            </button>
-            <button onClick={toggleSignUp}>Switch to Login</button>
+            <div className="submit-button"><Button setClickedButton={handleSubmit} name={"Sign Up"} path={''}></Button></div>
+            <button onClick={toggleSignUp}>Already have an account? Sign up here!</button>
           </div>
         </div>
       </main>

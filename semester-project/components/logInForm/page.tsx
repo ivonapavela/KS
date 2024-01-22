@@ -18,17 +18,6 @@ interface User {
   fields: UserFields;
 }
 
-interface Image {
-  sys: {
-    id: string;
-  };
-  fields: ImageFields;
-}
-
-interface ImageFields {
-  image:any;
-}
-
 const contentful = require('contentful');
 
 const client = contentful.createClient({
@@ -44,7 +33,6 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
   const [entries, setEntries] = useState<User[]>([]);
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [image, setImage] = useState<Image[]>([]);
   const { isLoggedIn, username, setLoggedIn, setUsername } = useAuth();
 
   useEffect(() => {
@@ -61,22 +49,6 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
         }) as { items: User[] };
 
         setEntries(response.items);
-      } catch (error) {
-        console.error('Error fetching entries:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await client.getEntries({
-          content_type: 'image',
-        }) as { items: Image[] };
-
-        setImage(response.items);
       } catch (error) {
         console.error('Error fetching entries:', error);
       }
@@ -103,7 +75,6 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
 
 
   return (
-    <main className="main" style={{ backgroundImage: `url(${image.length > 0 && image[0].fields.image?.fields?.file?.url})` }}>
          <div className="login-container">
             <h1 className="login-heading">Log In</h1>
             <div className="input-container">
@@ -136,7 +107,6 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
             <div className="submit-button"><Button setClickedButton={handleSubmit} name={"Log In"} path={""}></Button></div>
             <button onClick={toggleSignUp}>Don&apos;t have an account? Sign up here!</button>
           </div>
-    </main>
   );
 };
 
