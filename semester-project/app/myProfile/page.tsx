@@ -1,5 +1,4 @@
 import React  from 'react';
-import './LoginPage.css';
 import LogIn from '@/components/logIn/page';
 
 
