@@ -1,10 +1,4 @@
-/* styles.css */
-
-.recent-recipe-container {
-    margin-top:-50px;
-  }
-  
-  .recent-recipe-box {
+.recent-recipe-box {
     width: 100%; /* Adjust the width as needed */
     display: flex;
     align-items: center;

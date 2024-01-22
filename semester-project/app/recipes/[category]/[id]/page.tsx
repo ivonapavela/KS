@@ -32,7 +32,7 @@ interface RecipeFields {
   difficulty: string;
   cookingTime:number;
   ingredients: string[];
-  instructions: string;
+  instructions: string[];
   postimage?:any;
   comments:Comment[];
   rating:number;
@@ -135,22 +135,28 @@ export default function RecipsDetails({ params }: RecipesCategoriesParams) {
         </div>
       </div>
       <div className="secondary-information">
+                <ol className="instructions">
+                <p className="section-title" >Instructions:</p>
+                  {entry?.fields.instructions.map((instruction, index) => (
+                    <li className="instruction" key={index}>
+                      {index + 1}. {instruction}
+                      {index !== entry.fields.instructions.length - 1 && <br />}
+                    </li>
+                  ))}
+                </ol>
               <div className="ingredients">
-                <p className="section-title">Ingredients:</p>
-                {entry?.fields.ingredients.map((ingredient, index) => (
+              <div className="section-title">Ingredients:</div>
+              {entry?.fields.ingredients.map((ingredient, index) => (
                   <p className="ingredient" key={index}>
                     {ingredient}
                     {index !== entry.fields.ingredients.length - 1 && <br />}
                   </p>
                 ))}
               </div>
-              <div className="instructions">
-                <p className="section-title">Instructions:</p>
-                <p>{entry?.fields.instructions}</p>
-              </div>
-              <div className="recent-added-recipes"><RecentRecipes /></div>
       </div>
       <div className="comment-section">
+      <div className="recent-added-recipes"><RecentRecipes /></div>
+      <div className="comments">
       <CommentForm recipeId={entry?.sys.id} />
         <p className="section-title">Comments:</p>
         <ul className="comments-list">
@@ -164,6 +170,7 @@ export default function RecipsDetails({ params }: RecipesCategoriesParams) {
             <p>No comments available.</p>
           )}
         </ul>
+      </div>
       </div>
   </main>
   );

@@ -18,7 +18,7 @@ interface RecipeFields {
   difficulty: string;
   cookingTime:number;
   ingredients: string[];
-  instructions: string;
+  instructions: string[];
   postimage?:any;
   comments:Comment[];
   rating:number;

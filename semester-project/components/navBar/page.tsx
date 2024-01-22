@@ -46,7 +46,7 @@ const NavBar = () => {
   // Set CSS variable based on visibility state
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-100px' : '0');
+      document.documentElement.style.setProperty('--page-margin', !isNavBarVisible ? '-50px' : '0');
     }
   }, [isNavBarVisible]);
 
