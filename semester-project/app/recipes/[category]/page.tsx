@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from '@/components/searchBox/page';
+import SaveRecipe from '@/components/saveRecipe/page';
 
 
 interface Params {
@@ -163,7 +164,7 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
                 <div className="comment-count"><FontAwesomeIcon icon={faComment} />{entry.fields.comments ? entry.fields.comments.length : 0}
 </div>
               </Link>
-              
+              <SaveRecipe/>
             </div>
           ))}
       </div>

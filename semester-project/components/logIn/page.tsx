@@ -2,7 +2,7 @@
 import React  from 'react';
 import LogInForm from '@/components/logInForm/page';
 import { useAuth } from '@/app/AuthContext';
-//import DisplaySavedRecipes from '../displaySavedRecipes/page';
+import DisplaySavedRecipes from '../displaySavedRecipes/page';
 
 
 const LogIn: React.FC = () => {
@@ -16,7 +16,7 @@ const LogIn: React.FC = () => {
   return (
     <div>
         {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
-      {isLoggedIn ? (<p>haha</p>) : (<LogInForm/>) }
+      {isLoggedIn ? (<DisplaySavedRecipes/>) : (<LogInForm/>) }
     </div>
   );
 };
