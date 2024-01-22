@@ -1,8 +1,15 @@
-export default function MyProfile() {
-    return (
-      <main className="flex min-h-screen flex-col items-center justify-between p-10">
-        <h1 className="text-3xl font-bold">Log In Page</h1>
-      </main>
-    );
-  }
-  
+import React  from 'react';
+import './LoginPage.css';
+import LogIn from '@/components/logIn/page';
+
+
+const LoginPage: React.FC = () => {
+
+  return (
+    <div>
+      <LogIn/>
+    </div>
+  );
+};
+
+export default LoginPage;
