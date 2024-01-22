@@ -41,8 +41,11 @@ const addUser = async (newEntryData: UserFields) => {
     }
   };
 
-
-const SignUpForm: React.FC = () => {
+  interface SignUpFormProps {
+    toggleSignUp: () => void;
+  }
+  
+  const SignUpForm: React.FC<SignUpFormProps> = ({ toggleSignUp }) => {
     const [userName, setUserName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [uniqueUserNameError, setUniqueUserNameError] = useState(false);
@@ -100,6 +103,7 @@ const SignUpForm: React.FC = () => {
             <button type="button" onClick={handleSubmit}>
               Sign Up
             </button>
+            <button onClick={toggleSignUp}>Switch to Login</button>
           </div>
         </div>
       </main>

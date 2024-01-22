@@ -1,32 +1,30 @@
 'use client'
 import React, { useState } from 'react';
 import LogInForm from '@/components/logInForm/page';
-import SignUpForm from '@/components/signUpForm/page'; // Import the SignUpForm component
+import SignUpForm from '@/components/signUpForm/page';
+import AuthToggle from '../AuthToggle'; // Import the AuthToggle component
 import { useAuth } from '@/app/AuthContext';
 import DisplaySavedRecipes from '../displaySavedRecipes/page';
 
 const LogIn: React.FC = () => {
-    const { isLoggedIn, username, setLoggedIn, setUsername } = useAuth();
-    const [showSignUp, setShowSignUp] = useState(false); // State to toggle between login and signup components
+  const { isLoggedIn, username, setLoggedIn, setUsername } = useAuth();
+  const [showSignUp, setShowSignUp] = useState(false); // State to toggle between login and signup components
 
-    function handleLogout() {
-        setLoggedIn(false);
-        setUsername(null);
-    }
+  function handleLogout() {
+    setLoggedIn(false);
+    setUsername(null);
+  }
 
-    return (
-        <div>
-            {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
+  const toggleSignUp = () => {
+    setShowSignUp(!showSignUp);
+  };
 
-            {!isLoggedIn && 
-            <button onClick={() => setShowSignUp(!showSignUp)}>
-                {showSignUp ? 'Switch to Login' : 'Switch to Sign Up'}
-            </button>}
-
-            {/* Render either the DisplaySavedRecipes or the chosen authentication form */}
-            {isLoggedIn ? (<DisplaySavedRecipes/>) : (showSignUp ? <SignUpForm/> : <LogInForm/>)}
-        </div>
-    );
+  return (
+    <div>
+      {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
+      {isLoggedIn ? <DisplaySavedRecipes /> : showSignUp ? <SignUpForm toggleSignUp={toggleSignUp}/> : <LogInForm toggleSignUp={toggleSignUp} />}
+    </div>
+  );
 };
 
 export default LogIn;

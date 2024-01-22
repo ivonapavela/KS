@@ -1,7 +1,10 @@
 'use client'
 import { useAuth } from "@/app/AuthContext";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import "./logInPage.css";
+import Button from "../button/page";
 
 interface UserFields {
   userName: string;
@@ -15,6 +18,17 @@ interface User {
   fields: UserFields;
 }
 
+interface Image {
+  sys: {
+    id: string;
+  };
+  fields: ImageFields;
+}
+
+interface ImageFields {
+  image:any;
+}
+
 const contentful = require('contentful');
 
 const client = contentful.createClient({
@@ -22,12 +36,15 @@ const client = contentful.createClient({
   accessToken: 'SsS4a0T3sfF4NpTF4xhqPGL1OHjwgiN2f72YHtTbL8s',
 });
 
+interface LogInFormProps {
+  toggleSignUp: () => void;
+}
 
-
-const LogIn = () => {
+const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
   const [entries, setEntries] = useState<User[]>([]);
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [image, setImage] = useState<Image[]>([]);
   const { isLoggedIn, username, setLoggedIn, setUsername } = useAuth();
 
   useEffect(() => {
@@ -44,6 +61,22 @@ const LogIn = () => {
         }) as { items: User[] };
 
         setEntries(response.items);
+      } catch (error) {
+        console.error('Error fetching entries:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await client.getEntries({
+          content_type: 'image',
+        }) as { items: Image[] };
+
+        setImage(response.items);
       } catch (error) {
         console.error('Error fetching entries:', error);
       }
@@ -70,38 +103,50 @@ const LogIn = () => {
 
 
   return (
-    <main>
+    <main className="main">
       <div className="login-page">
-        <div className="login-container">
-          <h1 className="login-heading">Log In</h1>
-          <div className="input-container">
-            <input
-              type="text"
-              placeholder="Username"
-              className="username-input"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <input
-              type="password"
-              placeholder="Password"
-              className="password-input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-
-          <button type="button" onClick={handleSubmit}>
-            Log In
-          </button>
+        <div className="image">
+          {image.length > 0 && image[0].fields.image?.fields?.file?.url ? (
+            <img src={image[0].fields.image.fields.file.url} alt={image[0].sys.id} />
+          ) : (
+            <span>No Image</span>
+          )}
         </div>
-      </div>
+        <div className="login-container">
+            <h1 className="login-heading">Log In</h1>
+            <div className="input-container">
+            <div className="icon-container">
+              <FontAwesomeIcon icon={faUser} />
+            </div>
+              <input
+                type="text"
+                placeholder="Username"
+                className="username-input"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-container">
+              <input
+                type="password"
+                placeholder="Password"
+                className="password-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <div className="icon-container">
+              <FontAwesomeIcon icon={faLock} />
+            </div>
+            </div>
+
+            <div className="submit-button"><Button setClickedButton={handleSubmit} name={"Log In"} path={""}></Button></div>
+            <button onClick={toggleSignUp}>Don't have an account? Sign up here!</button>
+          </div>
+        </div>
     </main>
   );
 };
 
-export default LogIn;
+export default LogInForm;
