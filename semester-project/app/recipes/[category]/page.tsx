@@ -1,7 +1,13 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
+
+import FilterBox from "@/components/filterBox/page";
 import "./recipes.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+
 
 interface Params {
   category: string;
@@ -18,7 +24,7 @@ interface RecipeFields {
   difficulty: string;
   cookingTime:number;
   ingredients: string[];
-  instructions: string[];
+  instructions: string;
   postimage?:any;
   comments:Comment[];
   rating:number;
@@ -107,15 +113,22 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
   return (
     <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-10">
     <button onClick={handleShowFilterBoxClick}>
+        <FontAwesomeIcon icon={faFilter} className="mr-2" />
         Filters
       </button>
     {showFilterBox && <div className="filter-box-overlay"></div>}
     {showFilterBox && (
       <div className="filter-box-container">
+        <FilterBox
+          onFilterSubmit={handleFilterSubmit}
+          onFilterUndo={handleFilterUndo}
+          onClose={handleFilterClose}
+        />
       </div>
     )}
       <h1 className="text-3xl font-bold p-10" style={{ textTransform: 'capitalize' }}>{params.category} Recipes</h1>
       <div className="flex justify-between w-full">
+
   <div className="recipe-count ml-auto">
           You have <span style={{ fontWeight: 'bold' }}>
             {filteredEntries
@@ -146,8 +159,10 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
                 <div className="cooking-time"> Cooking Time: {entry.fields.cookingTime} mins</div>
                 <div className="difficulty-level"> Difficulty: {entry.fields.difficulty}</div>
                 <div className="ingredient-count">Ingredients: {entry.fields.ingredients.length}</div>
-                <div className="comment-count">{entry.fields.comments ? entry.fields.comments.length : 0}</div>
+                <div className="comment-count"><FontAwesomeIcon icon={faComment} />{entry.fields.comments ? entry.fields.comments.length : 0}
+</div>
               </Link>
+              
             </div>
           ))}
       </div>
