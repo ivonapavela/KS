@@ -64,7 +64,7 @@ const LogIn: React.FC = () => {
           className="main"
           style={{
             backgroundImage: `url(${
-              image.length > 0 && image[0].fields.image?.fields?.file?.url
+              image.length > 0 && image[1].fields.image?.fields?.file?.url
             })`,
           }}
         >

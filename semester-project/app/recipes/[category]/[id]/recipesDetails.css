@@ -1,7 +1,8 @@
 
-body {
+body, main {
     margin:0; 
     padding:0;   
+    background-color:rgb(var(--background-start-rgb));
 }
 
 .main-container {

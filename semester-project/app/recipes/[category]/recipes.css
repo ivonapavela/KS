@@ -1,3 +1,6 @@
+body, main {
+    background-color:rgb(var(--background-start-rgb));
+}
 .recipe-container {
     display: flex;
     flex-wrap: wrap;

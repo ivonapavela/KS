@@ -68,7 +68,11 @@ const NavBar = () => {
         </div>
       </nav>
       <button onClick={handleToggleVisibility} className="menu-button">
-        <FontAwesomeIcon icon={isWiderThan680px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown} className="icon" />
+      <FontAwesomeIcon
+          icon={isWiderThan680px ? faBars : isNavBarVisible ? faCaretUp : faCaretDown}
+          className="icon"
+          style={{ color: pathname === '/' ? 'white' : 'green' }}
+        />
       </button>
     </div>
   );
