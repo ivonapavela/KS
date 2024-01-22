@@ -142,7 +142,7 @@ const LogInForm: React.FC<LogInFormProps> = ({ toggleSignUp }) => {
             </div>
 
             <div className="submit-button"><Button setClickedButton={handleSubmit} name={"Log In"} path={""}></Button></div>
-            <button onClick={toggleSignUp}>Don't have an account? Sign up here!</button>
+            <button onClick={toggleSignUp}>Don'&apos;t have an account?&apos; Sign up here!&apos;</button>
           </div>
         </div>
     </main>
