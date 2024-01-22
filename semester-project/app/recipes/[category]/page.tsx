@@ -164,7 +164,7 @@ export default function RecipesCategories({ params }: RecipesCategoriesParams) {
                 <div className="comment-count"><FontAwesomeIcon icon={faComment} />{entry.fields.comments ? entry.fields.comments.length : 0}
 </div>
               </Link>
-              <SaveRecipe/>
+              <SaveRecipe recipeEntryId={entry.sys.id} />
             </div>
           ))}
       </div>

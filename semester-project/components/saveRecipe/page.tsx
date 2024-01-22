@@ -11,7 +11,7 @@ const client = createClient({
   accessToken: ACCESS_TOKEN,
 }) as any;
 
-const SaveRecipe = () => {
+const SaveRecipe = ({ recipeEntryId }: { recipeEntryId: string }) => {
   const { isLoggedIn, username } = useAuth();
   const [isSaved, setIsSaved] = useState<boolean>(true);
 
@@ -26,7 +26,7 @@ const SaveRecipe = () => {
         let entry: any = await environment.getEntry(username);
     
         // Fetch the comment entry
-        const recipeEntry: any = await environment.getEntry('6GQLdK2GhNeqKidQv3AZnO');
+        const recipeEntry: any = await environment.getEntry(recipeEntryId);
     
         // Initialize the comments field if it's undefined
         if (!entry.fields.savedRecipes) {
