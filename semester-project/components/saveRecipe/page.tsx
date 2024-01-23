@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/app/AuthContext';
@@ -12,72 +12,100 @@ const client = createClient({
 }) as any;
 
 const SaveRecipe = ({ recipeEntryId }: { recipeEntryId: string }) => {
-    const { isLoggedIn, username } = useAuth();
-    const [isSaved, setIsSaved] = useState<boolean>(false); // Set initial value to false
-  
-    const handleSaveToggle = async () => {
+  const { isLoggedIn, username } = useAuth();
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchSavedState = async () => {
       try {
-        // Check if the recipe is already saved
-        if (isSaved) {
-          console.log('Recipe is already saved.');
-          return;
-        }
-  
         const space = await client.getSpace(SPACE_ID);
         const environment = await space.getEnvironment('master');
-  
-        let entry: any = await environment.getEntry(username);
-        const recipeEntry: any = await environment.getEntry(recipeEntryId);
-  
-        if (!entry.fields.savedRecipes) {
-          entry.fields.savedRecipes = {
-            'en-US': [],
-          };
+        const entry: any = await environment.getEntry(username);
+
+        if (entry.fields.savedRecipes) {
+          const savedRecipeIds = entry.fields.savedRecipes['en-US'].map(
+            (savedRecipe: { sys: { id: any } }) => savedRecipe.sys.id
+          );
+
+          setIsSaved(savedRecipeIds.includes(recipeEntryId));
         }
-  
-        const currentSavedRecipes = entry.fields.savedRecipes['en-US'];
-  
-        // Check if the recipe is already in the saved recipes
-        if (currentSavedRecipes.some((savedRecipe: { sys: { id: any; }; }) => savedRecipe.sys.id === recipeEntry.sys.id)) {
-          console.log('Recipe is already saved.');
-          return;
-        }
-  
-        currentSavedRecipes.push({
-          sys: {
-            type: 'Link',
-            linkType: 'Entry',
-            id: recipeEntry.sys.id,
-          },
-        });
-  
-        entry.fields.savedRecipes['en-US'] = currentSavedRecipes;
-  
-        const latestVersion = entry.sys.version;
-  
-        entry = await entry.update();
-  
-        await entry.publish({ headers: { 'X-Contentful-Version': latestVersion } });
-  
-        console.log(`Entry ${entry.sys.id} updated with a link to ${recipeEntry.sys.id}.`);
-  
-        setIsSaved(true); // Update the state to indicate that the recipe is now saved
       } catch (error) {
-        console.error('Error:', error);
+        console.error('Error fetching saved state:', error);
       }
     };
-  
-    return (
-      <div className="saved-bookmark">
-        {isLoggedIn && (
-          <FontAwesomeIcon
-            icon={faBookmark}
-            className={`ml-1 ${isSaved ? 'text-yellow-500' : 'text-gray-500'}`}
-            onClick={handleSaveToggle}
-          />
-        )}
-      </div>
-    );
+
+    if (isLoggedIn) {
+      fetchSavedState();
+    }
+  }, [isLoggedIn, recipeEntryId, username]);
+
+  const handleSaveToggle = async () => {
+    try {
+      // Check if the recipe is already saved
+      if (isSaved) {
+        console.log('Recipe is already saved.');
+        return;
+      }
+
+      const space = await client.getSpace(SPACE_ID);
+      const environment = await space.getEnvironment('master');
+
+      let entry: any = await environment.getEntry(username);
+      const recipeEntry: any = await environment.getEntry(recipeEntryId);
+
+      if (!entry.fields.savedRecipes) {
+        entry.fields.savedRecipes = {
+          'en-US': [],
+        };
+      }
+
+      const currentSavedRecipes = entry.fields.savedRecipes['en-US'];
+
+      // Check if the recipe is already in the saved recipes
+      if (
+        currentSavedRecipes.some(
+          (savedRecipe: { sys: { id: any } }) => savedRecipe.sys.id === recipeEntry.sys.id
+        )
+      ) {
+        console.log('Recipe is already saved.');
+        return;
+      }
+
+      currentSavedRecipes.push({
+        sys: {
+          type: 'Link',
+          linkType: 'Entry',
+          id: recipeEntry.sys.id,
+        },
+      });
+
+      entry.fields.savedRecipes['en-US'] = currentSavedRecipes;
+
+      const latestVersion = entry.sys.version;
+
+      entry = await entry.update();
+
+      await entry.publish({ headers: { 'X-Contentful-Version': latestVersion } });
+
+      console.log(`Entry ${entry.sys.id} updated with a link to ${recipeEntry.sys.id}.`);
+
+      setIsSaved(true); // Update the state to indicate that the recipe is now saved
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
-  
-  export default SaveRecipe;
+
+  return (
+    <div className="saved-bookmark">
+      {isLoggedIn && (
+        <FontAwesomeIcon
+          icon={faBookmark}
+          className={`ml-1 ${isSaved ? 'text-green-500' : 'text-gray-500'}`}
+          onClick={handleSaveToggle}
+        />
+      )}
+    </div>
+  );
+};
+
+export default SaveRecipe;
