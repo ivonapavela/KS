@@ -58,7 +58,7 @@ const NavBar = () => {
     <div className="navbar-container">
       <nav style={{ display: isNavBarVisible ? 'block' : 'none' }}>
         <div>
-          <ul>
+          <ul className="navbar-list">
             {Object.entries(pages).map(([name, path]) => (
               <li key={name}>
                 <Button path={path} name={name} isActive={clickedButton === name} setClickedButton={setClickedButton}></Button>
