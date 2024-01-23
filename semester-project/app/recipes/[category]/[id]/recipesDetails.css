@@ -55,7 +55,7 @@ body, main {
 
 h3 {
     font-size: 20px;
-    color: #333;
+    color: var(--font-color);
     margin: 40px auto;
 }
 
@@ -63,6 +63,7 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    min-width:600px;
 }
 
 .display-line {
@@ -119,7 +120,7 @@ h3 {
   }
   
   .star {
-    color: black;
+    color: var(--font-color);
     font-size: 30px;
 }
 
@@ -139,6 +140,7 @@ h3 {
 .ingredients {
     width:30%;
     background-color: rgb(var(--background-start-rgb));
+    
 }
 
 
@@ -149,13 +151,16 @@ h3 {
 
 .ingredient {
     border-radius: 10px;
-    margin:20px;
+    margin:5% 0;
     padding: 5px 10px;
     box-sizing: border-box;
     font-size:20px;
     background-color: rgb(var(--main-color-rgb));
     color:white;
     border-radius: 20px;
+    width:70%;
+    margin-left:auto;
+    margin-right:10%;
 }
   
 .instructions {
@@ -193,4 +198,23 @@ h3 {
   .comment-item {
     margin-bottom: 10px;
   }
+
+  @media only screen and (max-width: 1000px) {
+    .display {
+        display: none;
+  }
+
+  .diet {
+    display:flex;
+    margin:0px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .pageimage {
+      display: none;
+}
+}
+
+
   
